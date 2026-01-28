@@ -61,14 +61,70 @@ public class Loops {
 //        }
 
         //Code for timmer
-        System.out.println("How many seconds to countdow from: ");
-        int start = scanner.nextInt();
+//        System.out.println("How many seconds to countdow from: ");
+//        int start = scanner.nextInt();
+//
+//        for(int i=start; i>=1; i--){
+//            System.out.println("Tick Tick : "+i);
+//            Thread.sleep(1000);
+//        }
+//        System.out.println("GOP GOP GOP !!!");
 
-        for(int i=start; i>=1; i--){
-            System.out.println("Tick Tick : "+i);
-            Thread.sleep(1000);
+        //Learning about the BREAK and CONTINUE
+        //First break, when in loop, if condition match and if we use the break, it will break the iteration there and move out
+//        for(int i=0; i<10; i++){
+//            if(i == 5){
+//                break;
+//            }
+//            System.out.println("Inside loop: "+i);
+//        }
+//        System.out.println("Outside of loop");
+
+        //Continue, it will skip the condition rule and continue after it
+//        for(int i=0; i<10; i++){
+//            if(i == 5){
+//                continue;
+//            }
+//            System.out.println("Inside Loop: "+i);
+//        }
+//        System.out.println("Outside after continue");
+
+        //Nested LOOP, loop inside other loop
+        //for every other 3 times, i need to print the hello
+        for(int i=0; i<3; i++){
+            System.out.println("Inside first loop ");
+            for(int j=i; j<3; j++){
+                System.out.println("Inside second loop ");
+                System.out.println("Hello");
+            }
         }
-        System.out.println("GOP GOP GOP !!!");
+
+        for(int i=1; i<=3; i++){
+            for(int j=1; j<=9; j++){
+                System.out.print(j+" ");
+            }
+            System.out.println();
+        }
+
+        //Game of creation of grid of Symbols
+        int row = 0;
+        int cols = 0;
+        char symbols;
+
+        System.out.println("Enter the number of rows: ");
+        row = scanner.nextInt();
+        System.out.println("Enter the number of cols: ");
+        cols = scanner.nextInt();
+        System.out.println("Enter the symbol you want in grid: ");
+        symbols = scanner.next().charAt(0); //next will work for string and then we can use charAt, give me char at 0 index
+
+        for(int i=1; i<=row; i++){
+            for(int j=1; j<=cols; j++){
+                System.out.print(symbols+" ");
+            }
+            System.out.println();
+        }
+
         scanner.close();
     }
 }
