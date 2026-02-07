@@ -25,6 +25,18 @@ public class OOPS {
 
         Student stu2 = new Student("Sandesh", 26, 4.0,true);
         System.out.println("The student info of 2: "+stu2.name);
+
+        /*
+        Static -> Makes a variable or method belong to the class rather than to any specific object.
+                   Commonly used for utility methods or shared resources.
+        */
+        Friend friend1 = new Friend("Bob");
+        System.out.println("The num of friends: "+Friend.numOfFriends); //this will show 1
+
+        //declaring new friend
+        Friend friend2 = new Friend("Sam");
+        System.out.println("The num of friends "+ Friend.numOfFriends); //this is also showing the 1
+        Friend.showFriends();
     }
 }
 
@@ -54,5 +66,19 @@ class Student {
         this.age = age;
         this.gpa = gpa;
         this.isEnrolled = isEnrolled;
+    }
+}
+
+class Friend{
+    String name;
+    static int numOfFriends; //now i want to keep it shared for all the resources,
+    //make it static
+    Friend(String name){
+        this.name = name;
+        numOfFriends++;
+    }
+
+    static void showFriends(){
+        System.out.println("You have: "+numOfFriends+" friends");
     }
 }
