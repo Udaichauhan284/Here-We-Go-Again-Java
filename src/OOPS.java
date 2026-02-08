@@ -37,6 +37,28 @@ public class OOPS {
         Friend friend2 = new Friend("Sam");
         System.out.println("The num of friends "+ Friend.numOfFriends); //this is also showing the 1
         Friend.showFriends();
+
+
+        /*
+        Inheritance -> One class inherits the attributes and methods from another class
+            Child inherits from Parent
+        */
+        //Now crreating object of Dog and Cat
+        Dog dog1 = new Dog();
+        Cat cat1 = new Cat();
+
+        System.out.println("Is dog1 is alive: "+dog1.isAlive);
+        dog1.eat(); //now dog have no method, thats why dog inherting the method of animal, showing
+        //The animal is eating
+
+        System.out.println("The lives of dog: "+dog1.lives);
+        System.out.println("The lives of cat: "+cat1.lives);
+        dog1.speak();
+        cat1.speak();
+
+        Plant plant = new Plant();
+        plant.photosynthesize();
+
     }
 }
 
@@ -80,5 +102,39 @@ class Friend{
 
     static void showFriends(){
         System.out.println("You have: "+numOfFriends+" friends");
+    }
+}
+
+//Examples of Inheritance
+class Organism{
+    boolean isAlive;
+    Organism(){
+        isAlive = true;
+    }
+}
+class Animal extends Organism{
+
+    void eat(){
+        System.out.println("The animal is eating");
+    }
+}
+
+class Dog extends Animal{
+    int lives = 1;
+    void speak(){
+        System.out.println("The dog says WOOF");
+    }
+}
+
+class Cat extends Animal{
+    int lives = 9;
+    void speak(){
+        System.out.println("The dog say MEOW");
+    }
+}
+
+class Plant extends Organism{
+    void photosynthesize(){
+        System.out.println("The plant absorbs sunlight");
     }
 }
