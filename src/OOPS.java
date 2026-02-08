@@ -119,11 +119,43 @@ public class OOPS {
         f.move();
 
         /*
-
+            .toString() -> method inherited from the Object class.
+                           used to return a string representation of an object.
+                           By default, it returns a hashCode as a unique identifier
+                           it can be overridden to provide meaningful details.
         */
+        Car1 carObj = new Car1("Volkwagon", "Virtus", 2026, "black");
+        System.out.println(carObj); //this is what i am seeing Car1@3feba861
+        System.out.println(carObj.toString());
+        //so after override the toString method, simple sout of carObj, will give the object details
+        //and also second one will also give
+
+        Car1 carObj2 = new Car1("Ford", "Mustang", 2025, "Blue");
+        System.out.println("This is second object: "+carObj2);
     }
 }
 
+//Example of toString()
+class Car1{
+    String make;
+    String model;
+    int year;
+    String color;
+
+    //need constructor
+    Car1(String make, String model, int year, String color){
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.color = color;
+    }
+
+    //Overriding the toString method
+    @Override
+    public String toString(){
+        return this.color+" "+this.year+" "+this.make+" "+this.model;
+    }
+}
 //Example of Method Override
 class Animal1{
     void move(){
