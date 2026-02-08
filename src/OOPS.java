@@ -106,11 +106,54 @@ public class OOPS {
         StudentGFG1 s = new StudentGFG1();
 
         /*
+            Method Override -> when a subclass provide its own implementation of a method
+            that is already defined in parent class.
+            Allows for code reusability and give specific implementations.
+        */
+        //example of method override
+        Dog1 d1 = new Dog1();
+        d1.move();
+        Cat1 c1 = new Cat1();
+        c1.move();
+        Fish f = new Fish();
+        f.move();
+
+        /*
 
         */
     }
 }
 
+//Example of Method Override
+class Animal1{
+    void move(){
+        System.out.println("This animal is running");
+    }
+}
+
+class Dog1 extends Animal1{
+    @Override
+    void move(){
+        super.move(); //Calling method of animal
+        System.out.println("Dog is running");
+    }
+}
+
+class Cat1 extends Animal1{
+    @Override
+    void move(){
+        super.move(); //calling method of Animal
+        System.out.println("Cat is running");
+    }
+}
+
+class Fish extends Animal1{
+    @Override
+    void move(){
+        super.move();
+        System.out.println("Fish is swimming slowly!");
+    }
+}
 //Example of Super
 class Person{
     String firstName;
