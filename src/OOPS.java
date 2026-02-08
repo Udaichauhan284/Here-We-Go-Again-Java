@@ -59,9 +59,149 @@ public class OOPS {
         Plant plant = new Plant();
         plant.photosynthesize();
 
+        /*
+        Super -> Refers to the parent class(subclass <- superclass)
+        Used in constructors and method overriding. calls the parent constructor to initialize attributes.
+
+        From GFG
+        The super keyword in Java is used to refers to the immediate parent class object in an
+        inheritance hierarchy. It allows a subclass to explicity access parent class members when they are
+        hidden or overridden. This keyword helps maintain clarity and control while working with inheritance.
+            -> Used to call parent class constructors using super()
+            -> helps access parent class methods and variables when overridden or hidden.
+            -> ensures proper inheritance behaviour and code reusability.
+            NOTE: Super keyword allows subclasses to inherit the behaviour and functionality of the parent class.
+
+        => Advantages of Using Java Super Keyword
+        The advantages of super keyword are listed below:
+            -> with the help of super keyword, subclasss can inherit the functionality from their parent classes.
+            -> subclasses can override methods and can access fields and methods from their parent class with the help of
+                super keyword, because of this code becomes more flexible.
+            -> with the help of super keyword we can easily access the methods and fields from the parent class without recreating it in
+                the subclass.
+            -> with the help of super keyword we can achieve abstraction and encapsulation, Subclass can focus on thier specified
+                tasks and the parent class take care of the general functionality.
+
+         => Important Points
+            -> super must be the first statement in a subclass constructor.
+            -> if no superclass constructor is explicitly called, Java automatically inserts a call to the no-argument constructor.
+            -> if the superclass does not have a no-argument constructor, compilation fails.
+            -> constructor calls form a chain, ending with the Object class constructor.
+        */
+        Person person1 = new Person("Udai", "Chauhan");
+        person1.showName();
+        StudentE student = new StudentE("Sandesh", "Kumar", 3.75);
+        student.showName();
+        student.showGPA();
+
+        //Example of Use case of super 1
+        CarGFG car1 = new CarGFG();
+        car1.display();
+
+        //Example of Usecase of super 2. super to use of method
+        StudentGFG stud1 = new StudentGFG();
+        stud1.display();
+
+        //Example of Usecase of super 3. call constructor
+        StudentGFG1 s = new StudentGFG1();
+
+        /*
+
+        */
     }
 }
 
+//Example of Super
+class Person{
+    String firstName;
+    String lastName;
+
+    Person(String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    void showName(){
+        System.out.println("The name of person: "+firstName+" "+lastName);
+    }
+}
+//now creating the student class to extend the Person
+class StudentE extends Person{
+    double gpa;
+    StudentE(String firstName, String lastName, double gpa){
+        super(firstName, lastName);
+        this.gpa = gpa;
+    }
+    void showGPA(){
+        System.out.println(this.firstName+"'s gpa is "+this.gpa);
+    }
+}
+
+/*
+ 1. Use of Super with Variables
+ Suppose there is a child, whose name is "MAX", and the child has also parent name "MAX".
+ Normally to refer to the parent, we should say "parent max" this is similar to using super.maxSpeed
+*/
+class Vehicle{
+    int maxSpeed = 120;
+}
+class CarGFG extends Vehicle{
+    int maxSpeed = 180;
+
+    void display(){
+        //print maxSpeed from the vehicle class
+        System.out.println("Maximum speed: "+super.maxSpeed);
+        //print this class speed
+        System.out.println("Maximum speed of car: "+this.maxSpeed);
+    }
+}
+
+/*
+ 2. Use of super with Methods
+ This is used when we want to call the parent class method. So, whenever a parent and child class have the same
+ named methods then to resolve the ambiguity we use the super keyword.
+ Example:- it is simply just like when we want to listen to our parent's advice instead of our own decision.
+ super.methodName() helps us follows the parent's behavior in code.
+*/
+class PersonGFG{
+    void message(){
+        System.out.println("This is person class");
+    }
+}
+//subclass Student
+class StudentGFG extends PersonGFG{
+    void message(){
+        System.out.println("THis is student class");
+    }
+
+    //display() methods is only in Student class
+    void display(){
+        message(); //this will invoke a method of current class
+        super.message(); //this will invoke a method of parent class.
+    }
+}
+
+/*
+3. Use of super() with Constructors
+the super() keyword can also be used to access the parent class constructor.
+One more important thing is that 'super' can call both parametric as well as non-parametric
+constructors depending on the situation.
+Example: Before a child born, first the parent exists, similarly, the parent class constructor must be called
+before the child's constructor finishes it's work.
+*/
+class PersonGFG1{
+    PersonGFG1(){
+        System.out.println("Person class constructor");
+    }
+}
+//subclass Student extending the Person class
+class StudentGFG1 extends PersonGFG1{
+    StudentGFG1(){
+        //invoke or call parent class constructor
+        super();
+        System.out.println("Student class constructor");
+    }
+}
 class Car{
     String make = "FORD";
     String model = "Mustang";
